@@ -32,8 +32,22 @@ export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   } else {
     validacionClave.error = "La clave debe de tener mayúsculas y minúsculas";
   }
-  console.log(arrayClave);
+
   return validacionClave;
 };
 
-console.log(tieneMayusculasYMinusculas("fsdfsd"));
+export const tieneNumeros = (clave: string): ValidacionClave => {
+  let validacionClave: ValidacionClave = {
+    esValida: false,
+  };
+  const arrayClave = clave.split("");
+  if (arrayClave.find((element) => !isNaN(Number(element)))) {
+    validacionClave = {
+      esValida: true,
+    };
+  } else {
+    validacionClave.error = "La clave debe de tener números";
+  }
+
+  return validacionClave;
+};
