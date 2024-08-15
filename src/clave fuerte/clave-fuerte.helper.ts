@@ -84,4 +84,17 @@ export const tieneLongitudMinima = (clave: string): ValidacionClave => {
   return validacionClave;
 };
 
-console.log(tieneLongitudMinima("34"));
+export const tieneNombreUsuario = (
+  nombreUsuario: string,
+  clave: string
+): ValidacionClave => {
+  if (clave.includes(nombreUsuario) === false) {
+    validacionClave = {
+      esValida: true,
+    };
+  } else {
+    validacionClave.error = "La clave no debe tener el nombre del usuario";
+  }
+
+  return validacionClave;
+};
