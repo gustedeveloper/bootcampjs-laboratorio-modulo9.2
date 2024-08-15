@@ -9,11 +9,19 @@ export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   let tieneMinusculas = false;
 
   const arrayClave = clave.split("");
-  if (arrayClave.find((element) => element === element.toLowerCase())) {
+  if (
+    arrayClave.find(
+      (element) => element === element.toLowerCase() && isNaN(Number(element))
+    )
+  ) {
     tieneMinusculas = true;
   }
 
-  if (arrayClave.find((element) => element === element.toUpperCase())) {
+  if (
+    arrayClave.find(
+      (element) => element === element.toUpperCase() && isNaN(Number(element))
+    )
+  ) {
     tieneMayusculas = true;
   }
 
