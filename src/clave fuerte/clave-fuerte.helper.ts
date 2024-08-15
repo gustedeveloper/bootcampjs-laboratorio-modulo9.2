@@ -133,5 +133,3 @@ export const tienePalabrasComunes = (
 
   return validacionClave;
 };
-
-console.log(tienePalabrasComunes("p", commonPasswords));
