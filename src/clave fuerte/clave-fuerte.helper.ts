@@ -1,4 +1,4 @@
-import { ValidacionClave, commonPasswords } from "./model";
+import { ValidacionClave } from "./model";
 
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   let tieneMayusculas = false;
