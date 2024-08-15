@@ -1,12 +1,12 @@
-import { ValidacionClave } from "./model";
-
-let validacionClave: ValidacionClave = {
-  esValida: false,
-};
+import { ValidacionClave, commonPasswords } from "./model";
 
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   let tieneMayusculas = false;
   let tieneMinusculas = false;
+
+  let validacionClave: ValidacionClave = {
+    esValida: false,
+  };
 
   const arrayClave = clave.split("");
   if (
@@ -72,6 +72,11 @@ export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
 
 export const tieneLongitudMinima = (clave: string): ValidacionClave => {
   const arrayClave = clave.split("");
+
+  let validacionClave: ValidacionClave = {
+    esValida: false,
+  };
+
   if (arrayClave.length >= 8) {
     validacionClave = {
       esValida: true,
@@ -88,6 +93,10 @@ export const tieneNombreUsuario = (
   nombreUsuario: string,
   clave: string
 ): ValidacionClave => {
+  let validacionClave: ValidacionClave = {
+    esValida: false,
+  };
+
   if (clave.includes(nombreUsuario) === false) {
     validacionClave = {
       esValida: true,
@@ -98,3 +107,31 @@ export const tieneNombreUsuario = (
 
   return validacionClave;
 };
+
+export const tienePalabrasComunes = (
+  clave: string,
+  commonPasswords: string[]
+): ValidacionClave => {
+  let validacionClave: ValidacionClave = {
+    esValida: false,
+  };
+
+  let palabraComunEncontrada = false;
+
+  commonPasswords.forEach((element) => {
+    if (clave.includes(element) && !palabraComunEncontrada) {
+      palabraComunEncontrada = true;
+      validacionClave.error = "La clave no debe de contener palabras comunes";
+    }
+  });
+
+  if (!palabraComunEncontrada) {
+    validacionClave = {
+      esValida: true,
+    };
+  }
+
+  return validacionClave;
+};
+
+console.log(tienePalabrasComunes("p", commonPasswords));
