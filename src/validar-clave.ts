@@ -55,4 +55,10 @@ export const validarClave = (
   return validacionClave;
 };
 
-console.log(validarClave("colocar", "fsdfdD3@", commonPasswords));
+console.log(validarClave("password", "password", commonPasswords));
+console.log(validarClave("passwordD", "passwordD", commonPasswords));
+console.log(validarClave("passwordD3", "passwordD3", commonPasswords));
+console.log(validarClave("passwordD3@", "passwordD3@", commonPasswords));
+console.log(validarClave("PEPE", "password3D@", commonPasswords));
+console.log(validarClave("PEPE", "pepito3D@", commonPasswords));
+console.log(validarClave("PEPE", "pepe3D@s", commonPasswords));
