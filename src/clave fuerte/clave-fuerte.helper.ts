@@ -51,3 +51,23 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
 
   return validacionClave;
 };
+
+export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
+  const caracteresEspeciales = ["@", "#", "+", "_", "..."];
+  const arrayClave = clave.split("");
+  let validacionClave: ValidacionClave = {
+    esValida: false,
+  };
+  if (arrayClave.some((element) => caracteresEspeciales.includes(element))) {
+    validacionClave = {
+      esValida: true,
+    };
+  } else {
+    validacionClave.error =
+      "La clave debe de tener caracteres especiales: @, #, +, _, ...";
+  }
+
+  return validacionClave;
+};
+
+console.log(tieneCaracteresEspeciales("5394_"));
