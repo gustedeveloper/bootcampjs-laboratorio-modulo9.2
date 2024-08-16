@@ -83,24 +83,17 @@ export const tienePalabrasComunes = (
   clave: string,
   commonPasswords: string[]
 ): ValidacionClave => {
-  let validacionClave: ValidacionClave = {
-    esValida: false,
-  };
-
-  let palabraComunEncontrada = false;
-
-  commonPasswords.forEach((element) => {
-    if (clave.includes(element) && !palabraComunEncontrada) {
-      palabraComunEncontrada = true;
-      validacionClave.error = "La clave no debe de contener palabras comunes";
-    }
-  });
-
-  if (!palabraComunEncontrada) {
-    validacionClave = {
+  const tienePalabraComun = commonPasswords.some((element) =>
+    clave.includes(element)
+  );
+  if (!tienePalabraComun) {
+    return {
       esValida: true,
     };
   }
 
-  return validacionClave;
+  return {
+    esValida: false,
+    error: "La clave no debe de contener palabras comunes",
+  };
 };
