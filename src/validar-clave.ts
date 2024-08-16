@@ -60,5 +60,6 @@ console.log(validarClave("passwordD", "passwordD", commonPasswords));
 console.log(validarClave("passwordD3", "passwordD3", commonPasswords));
 console.log(validarClave("passwordD3@", "passwordD3@", commonPasswords));
 console.log(validarClave("PEPE", "password3D@", commonPasswords));
+console.log(validarClave("PEPE", "aB12@_", commonPasswords));
 console.log(validarClave("PEPE", "pepito3D@", commonPasswords));
 console.log(validarClave("PEPE", "pepe3D@s", commonPasswords));
