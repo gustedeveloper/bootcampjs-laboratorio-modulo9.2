@@ -20,19 +20,17 @@ export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
 };
 
 export const tieneNumeros = (clave: string): ValidacionClave => {
-  let validacionClave: ValidacionClave = {
-    esValida: false,
-  };
   const arrayClave = clave.split("");
-  if (arrayClave.find((element) => !isNaN(Number(element)))) {
-    validacionClave = {
-      esValida: true,
-    };
-  } else {
-    validacionClave.error = "La clave debe de tener números";
+  const tieneNum = arrayClave.some((element) => !isNaN(Number(element)));
+
+  if (tieneNum) {
+    return { esValida: true };
   }
 
-  return validacionClave;
+  return {
+    esValida: false,
+    error: "La clave debe de tener números",
+  };
 };
 
 export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
