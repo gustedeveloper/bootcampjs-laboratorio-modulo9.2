@@ -1,39 +1,22 @@
 import { ValidacionClave } from "./model";
 
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
-  let tieneMayusculas = false;
-  let tieneMinusculas = false;
-
-  let validacionClave: ValidacionClave = {
-    esValida: false,
-  };
-
   const arrayClave = clave.split("");
-  if (
-    arrayClave.find(
-      (element) => element === element.toLowerCase() && isNaN(Number(element))
-    )
-  ) {
-    tieneMinusculas = true;
-  }
-
-  if (
-    arrayClave.find(
-      (element) => element === element.toUpperCase() && isNaN(Number(element))
-    )
-  ) {
-    tieneMayusculas = true;
-  }
+  const tieneMinusculas = arrayClave.some(
+    (element) => element === element.toLowerCase() && isNaN(Number(element))
+  );
+  const tieneMayusculas = arrayClave.some(
+    (element) => element === element.toUpperCase() && isNaN(Number(element))
+  );
 
   if (tieneMayusculas && tieneMinusculas) {
-    validacionClave = {
-      esValida: true,
-    };
-  } else {
-    validacionClave.error = "La clave debe de tener mayúsculas y minúsculas";
+    return { esValida: true };
   }
 
-  return validacionClave;
+  return {
+    esValida: false,
+    error: "La clave debe de tener mayúsculas y minúsculas",
+  };
 };
 
 export const tieneNumeros = (clave: string): ValidacionClave => {
