@@ -68,19 +68,15 @@ export const tieneNombreUsuario = (
   nombreUsuario: string,
   clave: string
 ): ValidacionClave => {
-  let validacionClave: ValidacionClave = {
-    esValida: false,
-  };
-
   if (clave.includes(nombreUsuario) === false) {
-    validacionClave = {
+    return {
       esValida: true,
     };
-  } else {
-    validacionClave.error = "La clave no debe tener el nombre del usuario";
   }
-
-  return validacionClave;
+  return {
+    esValida: false,
+    error: "La clave no debe tener el nombre del usuario",
+  };
 };
 
 export const tienePalabrasComunes = (
