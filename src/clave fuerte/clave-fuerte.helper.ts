@@ -15,7 +15,7 @@ export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
 
   return {
     esValida: false,
-    error: "La clave debe de tener mayúsculas y minúsculas",
+    error: "La clave debe tener mayúsculas y minúsculas",
   };
 };
 
@@ -29,7 +29,7 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
 
   return {
     esValida: false,
-    error: "La clave debe de tener números",
+    error: "La clave debe tener números",
   };
 };
 
@@ -46,27 +46,22 @@ export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
 
   return {
     esValida: false,
-    error: "La clave debe de tener caracteres especiales: @, #, +, _, ...",
+    error: "La clave debe tener caracteres especiales: @, #, +, _, ...",
   };
 };
 
 export const tieneLongitudMinima = (clave: string): ValidacionClave => {
   const arrayClave = clave.split("");
 
-  let validacionClave: ValidacionClave = {
-    esValida: false,
-  };
-
   if (arrayClave.length >= 8) {
-    validacionClave = {
+    return {
       esValida: true,
     };
-  } else {
-    validacionClave.error =
-      "La clave debe de tener una longitud mínima de 8 caracteres";
   }
-
-  return validacionClave;
+  return {
+    esValida: false,
+    error: "La clave debe tener una longitud mínima de 8 caracteres",
+  };
 };
 
 export const tieneNombreUsuario = (
